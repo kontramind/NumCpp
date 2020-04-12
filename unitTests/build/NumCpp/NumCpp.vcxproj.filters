@@ -644,12 +644,6 @@
     <ClInclude Include="..\..\..\include\NumCpp\Functions\deleteIndices.hpp">
       <Filter>Header Files\NumCpp\Functions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\NumCpp\Functions\diagFlat.hpp">
-      <Filter>Header Files\NumCpp\Functions</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\NumCpp\Functions\diagnol.hpp">
-      <Filter>Header Files\NumCpp\Functions</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\NumCpp\Functions\diff.hpp">
       <Filter>Header Files\NumCpp\Functions</Filter>
     </ClInclude>
@@ -1309,6 +1303,27 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\NumCpp\Roots\Newton.hpp">
       <Filter>Header Files\NumCpp\Roots</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\NumCpp\Functions\outer.hpp">
+      <Filter>Header Files\NumCpp\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\NumCpp\Functions\diagonal.hpp">
+      <Filter>Header Files\NumCpp\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\NumCpp\Functions\diag.hpp">
+      <Filter>Header Files\NumCpp\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\NumCpp\Functions\diagflat.hpp">
+      <Filter>Header Files\NumCpp\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\NumCpp\Rotations\wahbasProblem.hpp">
+      <Filter>Header Files\NumCpp\Rotations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\NumCpp\Linalg\gaussNewtonNlls.hpp">
+      <Filter>Header Files\NumCpp\Linalg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\NumCpp\Core\TypeTraits.hpp">
+      <Filter>Header Files\NumCpp\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

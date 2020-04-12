@@ -54,9 +54,6 @@ namespace nc
         template<typename dtype>
         class Poly1d
         {
-        private:
-            std::vector<dtype>      coefficients_{};
-
         public:
             //============================================================================
             // Method Description:
@@ -133,7 +130,7 @@ namespace nc
             {
                 auto newCoefficients = NdArray<dtypeOut>(1, static_cast<uint32>(coefficients_.size()));
 
-                auto function = [](dtype value) -> dtypeOut
+                auto function = [](dtype value) noexcept -> dtypeOut
                 {
                     return static_cast<dtypeOut>(value);
                 };
@@ -500,6 +497,9 @@ namespace nc
                 inOStream << inPoly.str() << std::endl;
                 return inOStream;
             }
+
+        private:
+            std::vector<dtype>      coefficients_{};
         };
     }
 }

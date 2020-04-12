@@ -1,10 +1,11 @@
 import numpy as np
 from termcolor import colored
+import os
 import sys
 if sys.platform == 'linux':
     sys.path.append(r'../lib')
 else:
-    sys.path.append(r'../build/x64/Release')
+    sys.path.append(os.path.abspath('../build/x64/Release'))
 import NumCpp
 
 ####################################################################################
@@ -44,7 +45,7 @@ def doTest():
         print(colored('\tFAIL', 'red'))
 
     print(colored('Testing VERSION', 'cyan'))
-    if NumCpp.VERSION == '1.0':
+    if NumCpp.VERSION == '1.3':
         print(colored('\tPASS', 'green'))
     else:
         print(colored('\tFAIL', 'red'))

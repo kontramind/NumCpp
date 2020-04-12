@@ -70,50 +70,6 @@ namespace nc
         typedef dtype*			iterator;
         typedef const dtype*	const_iterator;
 
-    private:
-        //====================================Attributes==============================
-        Shape			shape_{ 0, 0 };
-        uint32			size_{ 0 };
-        Endian          endianess_{ Endian::NATIVE };
-        dtype*			array_{ nullptr };
-        bool            ownsPtr_{ false };
-
-        //============================================================================
-        // Method Description:
-        ///						Deletes the internal array
-        ///
-        void deleteArray() noexcept
-        {
-            if (ownsPtr_ && array_ != nullptr)
-            {
-                delete[] array_;
-            }
-
-            array_ = nullptr;
-            shape_ = Shape(0, 0);
-            size_ = 0;
-            ownsPtr_ = false;
-        }
-
-        //============================================================================
-        // Method Description:
-        ///						Creates a new internal array
-        ///
-        /// @param
-        ///				inShape
-        ///
-        void newArray(const Shape& inShape) noexcept
-        {
-            deleteArray();
-
-            shape_ = inShape;
-            size_ = inShape.size();
-            endianess_ = Endian::NATIVE;
-            array_ = new dtype[size_];
-            ownsPtr_ = true;
-        }
-
-    public:
         //============================================================================
         // Method Description:
         ///						Defualt Constructor, not very usefull...
@@ -357,7 +313,7 @@ namespace nc
         /// @param
         ///				inOtherArray
         ///
-        NdArray(const NdArray<dtype>& inOtherArray) noexcept :
+        NdArray(const NdArray& inOtherArray) noexcept :
             shape_(inOtherArray.shape_),
             size_(inOtherArray.size_),
             endianess_(inOtherArray.endianess_),
@@ -374,14 +330,15 @@ namespace nc
         /// @param
         ///				inOtherArray
         ///
-        NdArray(NdArray<dtype>&& inOtherArray) noexcept :
+        NdArray(NdArray&& inOtherArray) noexcept :
             shape_(inOtherArray.shape_),
             size_(inOtherArray.size_),
             endianess_(inOtherArray.endianess_),
             array_(inOtherArray.array_),
-            ownsPtr_(true)
+            ownsPtr_(inOtherArray.ownsPtr_)
         {
             inOtherArray.shape_.rows = inOtherArray.shape_.cols = inOtherArray.size_ = 0;
+            inOtherArray.ownsPtr_ = false;
             inOtherArray.array_ = nullptr;
         }
 
@@ -403,7 +360,7 @@ namespace nc
         /// @return
         ///				NdArray<dtype>
         ///
-        NdArray<dtype>& operator=(const NdArray<dtype>& rhs) noexcept
+        NdArray& operator=(const NdArray& rhs) noexcept
         {
             if (&rhs != this)
             {
@@ -426,7 +383,7 @@ namespace nc
         /// @return
         ///				NdArray<dtype>
         ///
-        NdArray<dtype>& operator=(dtype inValue) noexcept
+        NdArray& operator=(dtype inValue) noexcept
         {
             stl_algorithms::fill(begin(), end(), inValue);
 
@@ -442,7 +399,7 @@ namespace nc
         /// @return
         ///				NdArray<dtype>
         ///
-        NdArray<dtype>& operator=(NdArray<dtype>&& rhs) noexcept
+        NdArray& operator=(NdArray&& rhs) noexcept
         {
             if (&rhs != this)
             {
@@ -470,8 +427,10 @@ namespace nc
         /// @return
         ///				value
         ///
-        dtype& operator[](int32 inIndex) noexcept
+        dtype& operator[](int32 inIndex)
         {
+            checkNullPtr();
+
             if (inIndex < 0)
             {
                 inIndex += size_;
@@ -489,8 +448,10 @@ namespace nc
         /// @return
         ///				value
         ///
-        const dtype& operator[](int32 inIndex) const noexcept
+        const dtype& operator[](int32 inIndex) const
         {
+            checkNullPtr();
+
             if (inIndex < 0)
             {
                 inIndex += size_;
@@ -510,6 +471,8 @@ namespace nc
         ///
         dtype& operator()(int32 inRowIndex, int32 inColIndex) noexcept
         {
+            checkNullPtr();
+
             if (inRowIndex < 0)
             {
                 inRowIndex += shape_.rows;
@@ -532,8 +495,10 @@ namespace nc
         /// @return
         ///				value
         ///
-        const dtype& operator()(int32 inRowIndex, int32 inColIndex) const noexcept
+        const dtype& operator()(int32 inRowIndex, int32 inColIndex) const
         {
+            checkNullPtr();
+
             if (inRowIndex < 0)
             {
                 inRowIndex += shape_.rows;
@@ -856,6 +821,8 @@ namespace nc
         ///
         NdArray<dtype> at(const Slice& inSlice) const
         {
+            checkNullPtr();
+
             // the slice operator already provides bounds checking. just including
             // the at method for completeness
             return operator[](inSlice);
@@ -915,8 +882,10 @@ namespace nc
         /// @return
         ///				iterator
         ///
-        iterator begin() noexcept
+        iterator begin()
         {
+            checkNullPtr();
+
             return array_;
         }
 
@@ -936,7 +905,7 @@ namespace nc
                 THROW_INVALID_ARGUMENT_ERROR("input row is greater than the number of rows in the array.");
             }
 
-            return array_ + inRow * shape_.cols;
+            return begin() + inRow * shape_.cols;
         }
 
         //============================================================================
@@ -972,7 +941,7 @@ namespace nc
         ///
         iterator end() noexcept
         {
-            return array_ + size_;
+            return begin() + size_;
         }
 
         //============================================================================
@@ -991,7 +960,7 @@ namespace nc
                 THROW_INVALID_ARGUMENT_ERROR("input row is greater than the number of rows in the array.");
             }
 
-            return array_ + inRow * shape_.cols + shape_.cols;
+            return begin(inRow) + shape_.cols;
         }
 
         //============================================================================
@@ -1026,8 +995,10 @@ namespace nc
         /// @return
         ///				const_iterator
         ///
-        const_iterator cbegin() const noexcept
+        const_iterator cbegin() const
         {
+            checkNullPtr();
+
             return array_;
         }
 
@@ -1047,7 +1018,7 @@ namespace nc
                 THROW_INVALID_ARGUMENT_ERROR("input row is greater than the number of rows in the array.");
             }
 
-            return array_ + inRow * shape_.cols;
+            return cbegin() + inRow * shape_.cols;
         }
 
         //============================================================================
@@ -1059,7 +1030,7 @@ namespace nc
         ///
         const_iterator cend() const noexcept
         {
-            return array_ + size_;
+            return cbegin() + size_;
         }
 
         //============================================================================
@@ -1077,7 +1048,8 @@ namespace nc
             {
                 THROW_INVALID_ARGUMENT_ERROR("input row is greater than the number of rows in the array.");
             }
-            return array_ + inRow * shape_.cols + shape_.cols;
+
+            return cbegin(inRow) + shape_.cols;
         }
 
         //============================================================================
@@ -1409,7 +1381,7 @@ namespace nc
 
         //============================================================================
         // Method Description:
-        ///						Returns the last element of the flattened array.
+        ///						Returns a copy of the last element of the flattened array.
         ///
         /// @return
         ///				dtype
@@ -1417,6 +1389,18 @@ namespace nc
         dtype back() const noexcept
         {
             return *(cend() - 1);
+        }
+
+        //============================================================================
+        // Method Description:
+        ///						Returns a reference the last element of the flattened array.
+        ///
+        /// @return
+        ///				dtype
+        ///
+        dtype& back() noexcept
+        {
+            return *(end() - 1);
         }
 
         //============================================================================
@@ -1504,7 +1488,7 @@ namespace nc
                 {
                     NdArray<bool> returnArray = { stl_algorithms::find(cbegin(), cend(), inValue) != cend() };
                     return returnArray;
-                }
+            }
                 case Axis::COL:
                 {
                     NdArray<bool> returnArray(1, shape_.rows);
@@ -1532,8 +1516,8 @@ namespace nc
                     // of the compiler warning.
                     return NdArray<bool>(0);
                 }
-            }
         }
+    }
 
         //============================================================================
         // Method Description:
@@ -1680,8 +1664,9 @@ namespace nc
         ///						Returns the raw pointer to the underlying data
         /// @return dtype*
         ///
-        dtype* data() const noexcept
+        dtype* data() const
         {
+            checkNullPtr();
             return array_;
         }
 
@@ -1692,10 +1677,10 @@ namespace nc
         ///                     to the underlying data.
         /// @return dtype*
         ///
-        dtype* dataRelease() noexcept
+        dtype* dataRelease()
         {
             ownsPtr_ = false;
-            return array_;
+            return data();
         }
 
         //============================================================================
@@ -1713,7 +1698,7 @@ namespace nc
         {
             switch (inAxis)
             {
-                case Axis::COL:
+                case Axis::ROW:
                 {
                     std::vector<dtype> diagnolValues;
                     int32 col = inOffset;
@@ -1721,7 +1706,7 @@ namespace nc
                     {
                         if (col < 0)
                         {
-                            col++;
+                            ++col;
                             continue;
                         }
                         else if (col >= static_cast<int32>(shape_.cols))
@@ -1735,7 +1720,7 @@ namespace nc
 
                     return NdArray<dtype>(diagnolValues);
                 }
-                case Axis::ROW:
+                case Axis::COL:
                 {
                     std::vector<dtype> diagnolValues;
                     uint32 col = 0;
@@ -1824,6 +1809,8 @@ namespace nc
         ///
         void dump(const std::string& inFilename) const
         {
+            checkNullPtr();
+
             filesystem::File f(inFilename);
             if (!f.hasExt())
             {
@@ -1992,7 +1979,7 @@ namespace nc
 
         //============================================================================
         // Method Description:
-        ///						Returns the first element of the flattened array.
+        ///						Returns a copy of the first element of the flattened array.
         ///
         /// @return
         ///				dtype
@@ -2000,6 +1987,18 @@ namespace nc
         dtype front() const noexcept
         {
             return *cbegin();
+        }
+
+        //============================================================================
+        // Method Description:
+        ///						Returns a reference to the first element of the flattened array.
+        ///
+        /// @return
+        ///				dtype
+        ///
+        dtype& front() noexcept
+        {
+            return *begin();
         }
 
         //============================================================================
@@ -3509,7 +3508,7 @@ namespace nc
             {
                 NdArray<dtype> returnArray(shape_);
                 double multFactor = utils::power(10.0, inNumDecimals);
-                auto function = [multFactor](dtype value) -> dtype
+                auto function = [multFactor](dtype value) noexcept -> dtype
                 {
                     return static_cast<dtype>(std::nearbyint(static_cast<double>(value) * multFactor) / multFactor);
                 };
@@ -3942,7 +3941,62 @@ namespace nc
 
             return *this;
         }
-    };
+
+    private:
+        //====================================Attributes==============================
+        Shape			shape_{ 0, 0 };
+        uint32			size_{ 0 };
+        Endian          endianess_{ Endian::NATIVE };
+        dtype*			array_{ nullptr };
+        bool            ownsPtr_{ false };
+
+        //============================================================================
+        // Method Description:
+        ///						Checks the array_ pointer for nullness on access
+        ///
+        void checkNullPtr() const
+        {
+            if (array_ == nullptr)
+            {
+                THROW_RUNTIME_ERROR("trying to access an empty array");
+            }
+        }
+
+        //============================================================================
+        // Method Description:
+        ///						Deletes the internal array
+        ///
+        void deleteArray() noexcept
+        {
+            if (ownsPtr_ && array_ != nullptr)
+            {
+                delete[] array_;
+            }
+
+            array_ = nullptr;
+            shape_.rows = shape_.cols = 0;
+            size_ = 0;
+            ownsPtr_ = false;
+        }
+
+        //============================================================================
+        // Method Description:
+        ///						Creates a new internal array
+        ///
+        /// @param
+        ///				inShape
+        ///
+        void newArray(const Shape& inShape) noexcept
+        {
+            deleteArray();
+
+            shape_ = inShape;
+            size_ = inShape.size();
+            endianess_ = Endian::NATIVE;
+            array_ = new dtype[size_];
+            ownsPtr_ = true;
+        }
+};
 
     // NOTE: this needs to be defined outside of the class to get rid of a compiler
     // error in Visual Studio
@@ -3965,21 +4019,5 @@ namespace nc
         }
 
         return std::make_pair(NdArray<uint32>(rowIndices), NdArray<uint32>(colIndices));
-    }
-
-    //============================================================================
-    // Method Description:
-    ///						io operator for the NdArray class
-    ///
-    /// @param      inOStream
-    /// @param      inArray
-    /// @return
-    ///				std::ostream
-    ///
-    template<typename dtype>
-    std::ostream& operator<<(std::ostream& inOStream, const NdArray<dtype>& inArray) noexcept
-    {
-        inOStream << inArray.str();
-        return inOStream;
     }
 }

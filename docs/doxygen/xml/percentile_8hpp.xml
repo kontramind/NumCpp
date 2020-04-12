@@ -17,337 +17,337 @@
     <includedby refid="percentile_filter_8hpp" local="yes">percentileFilter.hpp</includedby>
     <includedby refid="_functions_8hpp" local="yes">Functions.hpp</includedby>
     <incdepgraph>
-      <node id="14500">
+      <node id="14677">
         <label>boost/predef/other/endian.h</label>
       </node>
-      <node id="14475">
+      <node id="14652">
         <label>NumCpp/Core/Types.hpp</label>
         <link refid="_types_8hpp"/>
-        <childnode refid="14476" relation="include">
+        <childnode refid="14653" relation="include">
         </childnode>
       </node>
-      <node id="14509">
+      <node id="14686">
         <label>functional</label>
       </node>
-      <node id="14478">
+      <node id="14655">
         <label>limits</label>
       </node>
-      <node id="14485">
+      <node id="14662">
         <label>iterator</label>
       </node>
-      <node id="14493">
+      <node id="14670">
         <label>NumCpp/Core/DtypeInfo.hpp</label>
         <link refid="_dtype_info_8hpp"/>
-        <childnode refid="14478" relation="include">
+        <childnode refid="14655" relation="include">
         </childnode>
       </node>
-      <node id="14497">
+      <node id="14674">
         <label>NumCpp/Utils/power.hpp</label>
         <link refid="_utils_2power_8hpp"/>
-        <childnode refid="14475" relation="include">
+        <childnode refid="14652" relation="include">
         </childnode>
       </node>
-      <node id="14476">
+      <node id="14653">
         <label>cstdint</label>
       </node>
-      <node id="14492">
+      <node id="14669">
         <label>cmath</label>
       </node>
-      <node id="14479">
+      <node id="14656">
         <label>stdexcept</label>
       </node>
-      <node id="14486">
+      <node id="14663">
         <label>numeric</label>
       </node>
-      <node id="14480">
+      <node id="14657">
         <label>string</label>
       </node>
-      <node id="14508">
+      <node id="14685">
         <label>NumCpp/NdArray/NdArrayOperators.hpp</label>
         <link refid="_nd_array_operators_8hpp"/>
-        <childnode refid="14474" relation="include">
+        <childnode refid="14651" relation="include">
         </childnode>
-        <childnode refid="14483" relation="include">
+        <childnode refid="14660" relation="include">
         </childnode>
-        <childnode refid="14490" relation="include">
+        <childnode refid="14667" relation="include">
         </childnode>
-        <childnode refid="14484" relation="include">
+        <childnode refid="14661" relation="include">
         </childnode>
-        <childnode refid="14509" relation="include">
+        <childnode refid="14686" relation="include">
         </childnode>
       </node>
-      <node id="14498">
+      <node id="14675">
         <label>NumCpp/Utils/sqr.hpp</label>
         <link refid="sqr_8hpp"/>
       </node>
-      <node id="14496">
+      <node id="14673">
         <label>NumCpp/Core/Slice.hpp</label>
         <link refid="_slice_8hpp"/>
-        <childnode refid="14474" relation="include">
+        <childnode refid="14651" relation="include">
         </childnode>
-        <childnode refid="14475" relation="include">
+        <childnode refid="14652" relation="include">
         </childnode>
-        <childnode refid="14482" relation="include">
+        <childnode refid="14659" relation="include">
         </childnode>
-        <childnode refid="14484" relation="include">
+        <childnode refid="14661" relation="include">
         </childnode>
-        <childnode refid="14477" relation="include">
+        <childnode refid="14654" relation="include">
         </childnode>
-        <childnode refid="14480" relation="include">
+        <childnode refid="14657" relation="include">
         </childnode>
       </node>
-      <node id="14495">
+      <node id="14672">
         <label>fstream</label>
       </node>
-      <node id="14490">
+      <node id="14667">
         <label>NumCpp/NdArray/NdArrayCore.hpp</label>
         <link refid="_nd_array_core_8hpp"/>
-        <childnode refid="14491" relation="include">
+        <childnode refid="14668" relation="include">
         </childnode>
-        <childnode refid="14493" relation="include">
+        <childnode refid="14670" relation="include">
         </childnode>
-        <childnode refid="14474" relation="include">
+        <childnode refid="14651" relation="include">
         </childnode>
-        <childnode refid="14494" relation="include">
+        <childnode refid="14671" relation="include">
         </childnode>
-        <childnode refid="14483" relation="include">
+        <childnode refid="14660" relation="include">
         </childnode>
-        <childnode refid="14481" relation="include">
+        <childnode refid="14658" relation="include">
         </childnode>
-        <childnode refid="14496" relation="include">
+        <childnode refid="14673" relation="include">
         </childnode>
-        <childnode refid="14475" relation="include">
+        <childnode refid="14652" relation="include">
         </childnode>
-        <childnode refid="14482" relation="include">
+        <childnode refid="14659" relation="include">
         </childnode>
-        <childnode refid="14497" relation="include">
+        <childnode refid="14674" relation="include">
         </childnode>
-        <childnode refid="14498" relation="include">
+        <childnode refid="14675" relation="include">
         </childnode>
-        <childnode refid="14499" relation="include">
+        <childnode refid="14676" relation="include">
         </childnode>
-        <childnode refid="14500" relation="include">
+        <childnode refid="14677" relation="include">
         </childnode>
-        <childnode refid="14501" relation="include">
+        <childnode refid="14678" relation="include">
         </childnode>
-        <childnode refid="14502" relation="include">
+        <childnode refid="14679" relation="include">
         </childnode>
-        <childnode refid="14492" relation="include">
+        <childnode refid="14669" relation="include">
         </childnode>
-        <childnode refid="14503" relation="include">
+        <childnode refid="14680" relation="include">
         </childnode>
-        <childnode refid="14495" relation="include">
+        <childnode refid="14672" relation="include">
         </childnode>
-        <childnode refid="14504" relation="include">
+        <childnode refid="14681" relation="include">
         </childnode>
-        <childnode refid="14477" relation="include">
+        <childnode refid="14654" relation="include">
         </childnode>
-        <childnode refid="14486" relation="include">
+        <childnode refid="14663" relation="include">
         </childnode>
-        <childnode refid="14505" relation="include">
+        <childnode refid="14682" relation="include">
         </childnode>
-        <childnode refid="14480" relation="include">
+        <childnode refid="14657" relation="include">
         </childnode>
-        <childnode refid="14506" relation="include">
+        <childnode refid="14683" relation="include">
         </childnode>
-        <childnode refid="14487" relation="include">
+        <childnode refid="14664" relation="include">
         </childnode>
-        <childnode refid="14507" relation="include">
+        <childnode refid="14684" relation="include">
         </childnode>
       </node>
-      <node id="14488">
+      <node id="14665">
         <label>NumCpp/Functions/argmin.hpp</label>
         <link refid="argmin_8hpp"/>
-        <childnode refid="14475" relation="include">
+        <childnode refid="14652" relation="include">
         </childnode>
-        <childnode refid="14489" relation="include">
+        <childnode refid="14666" relation="include">
         </childnode>
       </node>
-      <node id="14494">
+      <node id="14671">
         <label>NumCpp/Core/Filesystem.hpp</label>
         <link refid="_filesystem_8hpp"/>
-        <childnode refid="14495" relation="include">
+        <childnode refid="14672" relation="include">
         </childnode>
-        <childnode refid="14480" relation="include">
+        <childnode refid="14657" relation="include">
         </childnode>
       </node>
-      <node id="14491">
+      <node id="14668">
         <label>NumCpp/Core/Constants.hpp</label>
         <link refid="_constants_8hpp"/>
-        <childnode refid="14492" relation="include">
+        <childnode refid="14669" relation="include">
         </childnode>
-        <childnode refid="14478" relation="include">
+        <childnode refid="14655" relation="include">
         </childnode>
-        <childnode refid="14480" relation="include">
+        <childnode refid="14657" relation="include">
         </childnode>
       </node>
-      <node id="14499">
+      <node id="14676">
         <label>boost/algorithm/clamp.hpp</label>
       </node>
-      <node id="14481">
+      <node id="14658">
         <label>NumCpp/Core/Shape.hpp</label>
         <link refid="_core_2_shape_8hpp"/>
-        <childnode refid="14475" relation="include">
+        <childnode refid="14652" relation="include">
         </childnode>
-        <childnode refid="14482" relation="include">
+        <childnode refid="14659" relation="include">
         </childnode>
-        <childnode refid="14477" relation="include">
+        <childnode refid="14654" relation="include">
         </childnode>
-        <childnode refid="14480" relation="include">
+        <childnode refid="14657" relation="include">
         </childnode>
       </node>
-      <node id="14511">
+      <node id="14688">
         <label>NumCpp/Utils/essentiallyEqual.hpp</label>
         <link refid="essentially_equal_8hpp"/>
-        <childnode refid="14493" relation="include">
+        <childnode refid="14670" relation="include">
         </childnode>
-        <childnode refid="14492" relation="include">
+        <childnode refid="14669" relation="include">
         </childnode>
-        <childnode refid="14480" relation="include">
+        <childnode refid="14657" relation="include">
         </childnode>
       </node>
-      <node id="14507">
+      <node id="14684">
         <label>vector</label>
       </node>
-      <node id="14489">
+      <node id="14666">
         <label>NumCpp/NdArray.hpp</label>
         <link refid="_nd_array_8hpp"/>
-        <childnode refid="14490" relation="include">
+        <childnode refid="14667" relation="include">
         </childnode>
-        <childnode refid="14508" relation="include">
+        <childnode refid="14685" relation="include">
         </childnode>
       </node>
-      <node id="14474">
+      <node id="14651">
         <label>NumCpp/Core/Error.hpp</label>
         <link refid="_error_8hpp"/>
-        <childnode refid="14475" relation="include">
+        <childnode refid="14652" relation="include">
         </childnode>
-        <childnode refid="14477" relation="include">
+        <childnode refid="14654" relation="include">
         </childnode>
-        <childnode refid="14478" relation="include">
+        <childnode refid="14655" relation="include">
         </childnode>
-        <childnode refid="14479" relation="include">
+        <childnode refid="14656" relation="include">
         </childnode>
-        <childnode refid="14480" relation="include">
+        <childnode refid="14657" relation="include">
         </childnode>
       </node>
-      <node id="14487">
+      <node id="14664">
         <label>utility</label>
       </node>
-      <node id="14502">
+      <node id="14679">
         <label>array</label>
       </node>
-      <node id="14473">
+      <node id="14650">
         <label>percentile.hpp</label>
         <link refid="percentile_8hpp"/>
-        <childnode refid="14474" relation="include">
+        <childnode refid="14651" relation="include">
         </childnode>
-        <childnode refid="14481" relation="include">
+        <childnode refid="14658" relation="include">
         </childnode>
-        <childnode refid="14483" relation="include">
+        <childnode refid="14660" relation="include">
         </childnode>
-        <childnode refid="14475" relation="include">
+        <childnode refid="14652" relation="include">
         </childnode>
-        <childnode refid="14488" relation="include">
+        <childnode refid="14665" relation="include">
         </childnode>
-        <childnode refid="14510" relation="include">
+        <childnode refid="14687" relation="include">
         </childnode>
-        <childnode refid="14489" relation="include">
+        <childnode refid="14666" relation="include">
         </childnode>
-        <childnode refid="14511" relation="include">
+        <childnode refid="14688" relation="include">
         </childnode>
-        <childnode refid="14484" relation="include">
+        <childnode refid="14661" relation="include">
         </childnode>
-        <childnode refid="14492" relation="include">
+        <childnode refid="14669" relation="include">
         </childnode>
-        <childnode refid="14480" relation="include">
+        <childnode refid="14657" relation="include">
         </childnode>
       </node>
-      <node id="14510">
+      <node id="14687">
         <label>NumCpp/Functions/clip.hpp</label>
         <link refid="clip_8hpp"/>
-        <childnode refid="14489" relation="include">
+        <childnode refid="14666" relation="include">
         </childnode>
-        <childnode refid="14499" relation="include">
+        <childnode refid="14676" relation="include">
         </childnode>
       </node>
-      <node id="14482">
+      <node id="14659">
         <label>NumCpp/Utils/num2str.hpp</label>
         <link refid="num2str_8hpp"/>
-        <childnode refid="14480" relation="include">
+        <childnode refid="14657" relation="include">
         </childnode>
       </node>
-      <node id="14483">
+      <node id="14660">
         <label>NumCpp/Core/StlAlgorithms.hpp</label>
         <link refid="_stl_algorithms_8hpp"/>
-        <childnode refid="14484" relation="include">
+        <childnode refid="14661" relation="include">
         </childnode>
-        <childnode refid="14485" relation="include">
+        <childnode refid="14662" relation="include">
         </childnode>
-        <childnode refid="14486" relation="include">
+        <childnode refid="14663" relation="include">
         </childnode>
-        <childnode refid="14487" relation="include">
+        <childnode refid="14664" relation="include">
         </childnode>
       </node>
-      <node id="14477">
+      <node id="14654">
         <label>iostream</label>
       </node>
-      <node id="14503">
+      <node id="14680">
         <label>deque</label>
       </node>
-      <node id="14501">
+      <node id="14678">
         <label>boost/endian/conversion.hpp</label>
       </node>
-      <node id="14506">
+      <node id="14683">
         <label>type_traits</label>
       </node>
-      <node id="14505">
+      <node id="14682">
         <label>set</label>
       </node>
-      <node id="14484">
+      <node id="14661">
         <label>algorithm</label>
       </node>
-      <node id="14504">
+      <node id="14681">
         <label>initializer_list</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="14515">
+      <node id="14692">
         <label>NumCpp.hpp</label>
         <link refid="_num_cpp_8hpp"/>
       </node>
-      <node id="14516">
+      <node id="14693">
         <label>percentileFilter.hpp</label>
         <link refid="percentile_filter_8hpp"/>
-        <childnode refid="14514" relation="include">
+        <childnode refid="14691" relation="include">
         </childnode>
       </node>
-      <node id="14514">
+      <node id="14691">
         <label>Filter.hpp</label>
         <link refid="_filter_8hpp"/>
-        <childnode refid="14515" relation="include">
+        <childnode refid="14692" relation="include">
         </childnode>
       </node>
-      <node id="14513">
+      <node id="14690">
         <label>percentileFilter1d.hpp</label>
         <link refid="percentile_filter1d_8hpp"/>
-        <childnode refid="14514" relation="include">
+        <childnode refid="14691" relation="include">
         </childnode>
       </node>
-      <node id="14517">
+      <node id="14694">
         <label>Functions.hpp</label>
         <link refid="_functions_8hpp"/>
-        <childnode refid="14515" relation="include">
+        <childnode refid="14692" relation="include">
         </childnode>
       </node>
-      <node id="14512">
+      <node id="14689">
         <label>percentile.hpp</label>
         <link refid="percentile_8hpp"/>
-        <childnode refid="14513" relation="include">
+        <childnode refid="14690" relation="include">
         </childnode>
-        <childnode refid="14516" relation="include">
+        <childnode refid="14693" relation="include">
         </childnode>
-        <childnode refid="14517" relation="include">
+        <childnode refid="14694" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -410,7 +410,7 @@
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacenc_1_1utils_1ab5d74e774cbc9596b129d7a507e58fe7" kindref="member">utils::essentiallyEqual</ref>(inPercentile,<sp/>0.0))</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classnc_1_1_nd_array" kindref="compound">NdArray&lt;dtype&gt;</ref><sp/>returnArray<sp/>=<sp/>{<sp/>*inArray.<ref refid="classnc_1_1_nd_array_1afab8bb1ff84015deae6dc7ed74a68227" kindref="member">cbegin</ref>()<sp/>};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classnc_1_1_nd_array" kindref="compound">NdArray&lt;dtype&gt;</ref><sp/>returnArray<sp/>=<sp/>{<sp/>*inArray.<ref refid="classnc_1_1_nd_array_1a46a8bd2b5b14f75e80590fb11ece89ba" kindref="member">cbegin</ref>()<sp/>};</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>returnArray;</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacenc_1_1utils_1ab5d74e774cbc9596b129d7a507e58fe7" kindref="member">utils::essentiallyEqual</ref>(inPercentile,<sp/>100.0))</highlight></codeline>
@@ -423,7 +423,7 @@
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacenc_1aacba4d66f94f6f53637e23c5d82e20d8" kindref="member">uint32</ref><sp/>indexLower<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="namespacenc_1aacba4d66f94f6f53637e23c5d82e20d8" kindref="member">uint32</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(clip&lt;uint32&gt;(i,<sp/>0,<sp/>inArray.<ref refid="classnc_1_1_nd_array_1a6871de7968fa26f32d9c43167cd66131" kindref="member">size</ref>()<sp/>-<sp/>2));</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classnc_1_1_nd_array" kindref="compound">NdArray&lt;double&gt;</ref><sp/>arrayCopy<sp/>=<sp/>inArray.template<sp/>astype&lt;double&gt;();</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacenc_1_1stl__algorithms_1a4987a29c6a989094d647f5a6de75cc6f" kindref="member">stl_algorithms::sort</ref>(arrayCopy.<ref refid="classnc_1_1_nd_array_1a90547fcd7b438dd9e0d77d2f8fd3036d" kindref="member">begin</ref>(),<sp/>arrayCopy.<ref refid="classnc_1_1_nd_array_1a217adf4a530aa2bba221d89c3c5a96be" kindref="member">end</ref>());</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacenc_1_1stl__algorithms_1a4987a29c6a989094d647f5a6de75cc6f" kindref="member">stl_algorithms::sort</ref>(arrayCopy.<ref refid="classnc_1_1_nd_array_1a7f0714a1bd6f9f03d5f28e420c61bf0f" kindref="member">begin</ref>(),<sp/>arrayCopy.<ref refid="classnc_1_1_nd_array_1a217adf4a530aa2bba221d89c3c5a96be" kindref="member">end</ref>());</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(inInterpMethod.compare(</highlight><highlight class="stringliteral">&quot;linear&quot;</highlight><highlight class="normal">)<sp/>==<sp/>0)</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
@@ -488,7 +488,7 @@
 <codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classnc_1_1_nd_array" kindref="compound">NdArray&lt;dtype&gt;</ref><sp/>returnArray(1,<sp/>inShape.<ref refid="classnc_1_1_shape_1a6f89f699dea6eb89eef19e00c92b223a" kindref="member">rows</ref>);</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="namespacenc_1aacba4d66f94f6f53637e23c5d82e20d8" kindref="member">uint32</ref><sp/>row<sp/>=<sp/>0;<sp/>row<sp/>&lt;<sp/>inShape.<ref refid="classnc_1_1_shape_1a6f89f699dea6eb89eef19e00c92b223a" kindref="member">rows</ref>;<sp/>++row)</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>returnArray[row]<sp/>=<sp/><ref refid="namespacenc_1ad902e7f62fd962d9f306a7cd23117837" kindref="member">percentile</ref>(<ref refid="classnc_1_1_nd_array" kindref="compound">NdArray&lt;dtype&gt;</ref>(inArray.<ref refid="classnc_1_1_nd_array_1afab8bb1ff84015deae6dc7ed74a68227" kindref="member">cbegin</ref>(row),<sp/>inArray.<ref refid="classnc_1_1_nd_array_1a01305da9771c34f86b419379ee986f3e" kindref="member">cend</ref>(row)),</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>returnArray[row]<sp/>=<sp/><ref refid="namespacenc_1ad902e7f62fd962d9f306a7cd23117837" kindref="member">percentile</ref>(<ref refid="classnc_1_1_nd_array" kindref="compound">NdArray&lt;dtype&gt;</ref>(inArray.<ref refid="classnc_1_1_nd_array_1a46a8bd2b5b14f75e80590fb11ece89ba" kindref="member">cbegin</ref>(row),<sp/>inArray.<ref refid="classnc_1_1_nd_array_1a01305da9771c34f86b419379ee986f3e" kindref="member">cend</ref>(row)),</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inPercentile,<sp/><ref refid="namespacenc_1a5edb9ac6f596ae1256faa3f5d797dc84ab50339a10e1de285ac99d4c3990b8693" kindref="member">Axis::NONE</ref>,<sp/>inInterpMethod).item();</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
@@ -502,7 +502,7 @@
 <codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classnc_1_1_nd_array" kindref="compound">NdArray&lt;dtype&gt;</ref><sp/>returnArray(1,<sp/>inShape.<ref refid="classnc_1_1_shape_1a6f89f699dea6eb89eef19e00c92b223a" kindref="member">rows</ref>);</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="namespacenc_1aacba4d66f94f6f53637e23c5d82e20d8" kindref="member">uint32</ref><sp/>row<sp/>=<sp/>0;<sp/>row<sp/>&lt;<sp/>inShape.<ref refid="classnc_1_1_shape_1a6f89f699dea6eb89eef19e00c92b223a" kindref="member">rows</ref>;<sp/>++row)</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>returnArray[row]<sp/>=<sp/><ref refid="namespacenc_1ad902e7f62fd962d9f306a7cd23117837" kindref="member">percentile</ref>(<ref refid="classnc_1_1_nd_array" kindref="compound">NdArray&lt;dtype&gt;</ref>(arrayTrans.<ref refid="classnc_1_1_nd_array_1afab8bb1ff84015deae6dc7ed74a68227" kindref="member">cbegin</ref>(row),<sp/>arrayTrans.<ref refid="classnc_1_1_nd_array_1a01305da9771c34f86b419379ee986f3e" kindref="member">cend</ref>(row)),</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>returnArray[row]<sp/>=<sp/><ref refid="namespacenc_1ad902e7f62fd962d9f306a7cd23117837" kindref="member">percentile</ref>(<ref refid="classnc_1_1_nd_array" kindref="compound">NdArray&lt;dtype&gt;</ref>(arrayTrans.<ref refid="classnc_1_1_nd_array_1a46a8bd2b5b14f75e80590fb11ece89ba" kindref="member">cbegin</ref>(row),<sp/>arrayTrans.<ref refid="classnc_1_1_nd_array_1a01305da9771c34f86b419379ee986f3e" kindref="member">cend</ref>(row)),</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inPercentile,<sp/><ref refid="namespacenc_1a5edb9ac6f596ae1256faa3f5d797dc84ab50339a10e1de285ac99d4c3990b8693" kindref="member">Axis::NONE</ref>,<sp/>inInterpMethod).item();</highlight></codeline>
 <codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"></highlight></codeline>

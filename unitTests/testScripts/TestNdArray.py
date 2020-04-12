@@ -7,7 +7,7 @@ import sys
 if sys.platform == 'linux':
     sys.path.append(r'../lib')
 else:
-    sys.path.append(r'../build/x64/Release')
+    sys.path.append(os.path.abspath('../build/x64/Release'))
 import NumCpp
 
 ####################################################################################
@@ -320,6 +320,12 @@ def doTest():
     else:
         print(colored('\tFAIL', 'red'))
 
+    print(colored('Testing back reference', 'cyan'))
+    if cArray.backReference() == data.flatten()[-1]:
+        print(colored('\tPASS', 'green'))
+    else:
+        print(colored('\tFAIL', 'red'))
+
     print(colored('Testing byteswap', 'cyan'))
     shapeInput = np.random.randint(1, 100, [2, ])
     shape = NumCpp.Shape(shapeInput[0].item(), shapeInput[1].item())
@@ -482,7 +488,7 @@ def doTest():
     data = np.random.randint(1, 50, [shape.rows, shape.cols], dtype=np.uint32)
     cArray.setArray(data)
     offset = np.random.randint(-min(shape.rows, shape.cols), min(shape.rows, shape.cols), [1,]).item()
-    if np.array_equal(cArray.diagonal(offset, NumCpp.Axis.ROW).astype(np.uint32).flatten(), data.diagonal(offset, axis1=1, axis2=0)):
+    if np.array_equal(cArray.diagonal(offset, NumCpp.Axis.ROW).astype(np.uint32).flatten(), data.diagonal(offset, axis1=0, axis2=1)):
         print(colored('\tPASS', 'green'))
     else:
         print(colored('\tFAIL', 'red'))
@@ -494,7 +500,7 @@ def doTest():
     data = np.random.randint(1, 50, [shape.rows, shape.cols], dtype=np.uint32)
     cArray.setArray(data)
     offset = np.random.randint(-min(shape.rows, shape.cols), min(shape.rows, shape.cols), [1,]).item()
-    if np.array_equal(cArray.diagonal(offset, NumCpp.Axis.COL).astype(np.uint32).flatten(), data.diagonal(offset, axis1=0, axis2=1)):
+    if np.array_equal(cArray.diagonal(offset, NumCpp.Axis.COL).astype(np.uint32).flatten(), data.diagonal(offset, axis1=1, axis2=0)):
         print(colored('\tPASS', 'green'))
     else:
         print(colored('\tFAIL', 'red'))
@@ -584,6 +590,12 @@ def doTest():
 
     print(colored('Testing front', 'cyan'))
     if cArray.front() == data.flatten()[0]:
+        print(colored('\tPASS', 'green'))
+    else:
+        print(colored('\tFAIL', 'red'))
+
+    print(colored('Testing front reference', 'cyan'))
+    if cArray.frontReference() == data.flatten()[0]:
         print(colored('\tPASS', 'green'))
     else:
         print(colored('\tFAIL', 'red'))

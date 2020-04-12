@@ -150,6 +150,22 @@ namespace NdArrayInterface
     //================================================================================
 
     template<typename dtype>
+    dtype back(const NdArray<dtype>& self)
+    {
+        return self.back();
+    }
+
+    //================================================================================
+
+    template<typename dtype>
+    dtype backReference(NdArray<dtype>& self)
+    {
+        return self.back();
+    }
+
+    //================================================================================
+
+    template<typename dtype>
     np::ndarray clip(const NdArray<dtype>& self, dtype inMin, dtype inMax)
     {
         return nc2Boost(self.clip(inMin, inMax));
@@ -226,6 +242,22 @@ namespace NdArrayInterface
     np::ndarray flatten(const NdArray<dtype>& self)
     {
         return nc2Boost(self.flatten());
+    }
+
+    //================================================================================
+
+    template<typename dtype>
+    dtype front(const NdArray<dtype>& self)
+    {
+        return self.front();
+    }
+
+    //================================================================================
+
+    template<typename dtype>
+    dtype frontReference(NdArray<dtype>& self)
+    {
+        return self.front();
     }
 
     //================================================================================
@@ -1692,9 +1724,17 @@ namespace MethodsInterface
     //================================================================================
 
     template<typename dtype>
-    np::ndarray diagflat(const NdArray<dtype>& inArray)
+    np::ndarray diag(const NdArray<dtype>& inArray, int32 k)
     {
-        return nc2Boost(nc::diagflat(inArray));
+        return nc2Boost(nc::diag(inArray, k));
+    }
+
+    //================================================================================
+
+    template<typename dtype>
+    np::ndarray diagflat(const NdArray<dtype>& inArray, int32 k)
+    {
+        return nc2Boost(nc::diagflat(inArray, k));
     }
 
     //================================================================================
@@ -2241,6 +2281,14 @@ namespace MethodsInterface
     np::ndarray onesShape(const Shape& inShape)
     {
         return nc2Boost(ones<dtype>(inShape));
+    }
+
+    //================================================================================
+
+    template<typename dtype>
+    np::ndarray outer(const NdArray<dtype>& inArray1, const NdArray<dtype>& inArray2)
+    {
+        return nc2Boost(nc::outer(inArray1, inArray2));
     }
 
     //================================================================================
@@ -2951,6 +2999,23 @@ namespace RotationsInterface
         auto v = boost2Nc<T>(inV);
 
         return nc2Boost(rotations::rodriguesRotation(k, inTheta, v));
+    }
+
+    template<typename T>
+    np::ndarray wahbasProblem(np::ndarray& inWk, np::ndarray& inVk)
+    {
+        auto wk = boost2Nc<T>(inWk);
+        auto vk = boost2Nc<T>(inVk);
+        return nc2Boost(rotations::wahbasProblem(wk, vk));
+    }
+
+    template<typename T>
+    np::ndarray wahbasProblemWeighted(np::ndarray& inWk, np::ndarray& inVk, np::ndarray& inAk)
+    {
+        auto wk = boost2Nc<T>(inWk);
+        auto vk = boost2Nc<T>(inVk);
+        auto ak = boost2Nc<T>(inAk);
+        return nc2Boost(rotations::wahbasProblem(wk, vk, ak));
     }
 }
 
@@ -3974,7 +4039,8 @@ BOOST_PYTHON_MODULE(NumCpp)
         .def("argmax", &NdArrayInterface::argmax<double>)
         .def("argmin", &NdArrayInterface::argmin<double>)
         .def("argsort", &NdArrayInterface::argsort<double>)
-        .def("back", &NdArrayDouble::back)
+        .def("back", &NdArrayInterface::back<double>)
+        .def("backReference", &NdArrayInterface::backReference<double>)
         .def("clip", &NdArrayInterface::clip<double>)
         .def("copy", &NdArrayInterface::copy<double>)
         .def("column", &NdArrayDouble::column)
@@ -3987,7 +4053,8 @@ BOOST_PYTHON_MODULE(NumCpp)
         .def("fill", &NdArrayInterface::fill<double>)
         .def("flatnonzero", &NdArrayInterface::flatnonzero<double>)
         .def("flatten", &NdArrayInterface::flatten<double>)
-        .def("front", &NdArrayDouble::front)
+        .def("front", &NdArrayInterface::front<double>)
+        .def("frontReference", &NdArrayInterface::frontReference<double>)
         .def("get", &NdArrayInterface::getValueFlat<double>)
         .def("get", &NdArrayInterface::getValueRowCol<double>)
         .def("get", &NdArrayInterface::getSlice1D<double>)
@@ -4294,6 +4361,7 @@ BOOST_PYTHON_MODULE(NumCpp)
     bp::def("degreesArray", &MethodsInterface::degreesArray<double>);
     bp::def("deleteIndicesScaler", &MethodsInterface::deleteIndicesScaler<double>);
     bp::def("deleteIndicesSlice", &MethodsInterface::deleteIndicesSlice<double>);
+    bp::def("diag", &MethodsInterface::diag<double>);
     bp::def("diagflat", &MethodsInterface::diagflat<double>);
     bp::def("diagonal", &MethodsInterface::diagonal<double>);
     bp::def("diff", &MethodsInterface::diff<double>);
@@ -4420,6 +4488,7 @@ BOOST_PYTHON_MODULE(NumCpp)
     bp::def("onesRowCol", &MethodsInterface::onesRowCol<double>);
     bp::def("onesShape", &MethodsInterface::onesShape<double>);
     bp::def("ones_like", &ones_like<double, double>);
+    bp::def("outer", &MethodsInterface::outer<double>);
     bp::def("pad", &pad<double>);
     bp::def("partition", &partition<double>);
     bp::def("percentile", &percentile<double>);
@@ -4578,39 +4647,148 @@ BOOST_PYTHON_MODULE(NumCpp)
     bp::def("powerf", &utils::powerf);
 
     // Random.hpp
-    bp::def("bernoulli", &random::bernoulli<double>);
-    bp::def("beta", &random::beta<double>);
-    bp::def("binomial", &random::binomial<int32>);
-    bp::def("chiSquare", &random::chiSquare<double>);
+    NdArray<double> (*bernoulliArray)(const Shape&, double) = &random::bernoulli<double>;
+    double (*bernoilliScalar)(double) = &random::bernoulli<double>;
+    bp::def("bernoulli", bernoulliArray);
+    bp::def("bernoulli", bernoilliScalar);
+
+    NdArray<double> (*betaArray)(const Shape&, double, double) = &random::beta<double>;
+    double (*betaScalar)(double, double) = &random::beta<double>;
+    bp::def("beta", betaArray);
+    bp::def("beta", betaScalar);
+
+    NdArray<int32> (*binomialArray)(const Shape&, int32, double) = &random::binomial<int32>;
+    int32 (*binomialScalar)(int32, double) = &random::binomial<int32>;
+    bp::def("binomial", binomialArray);
+    bp::def("binomial", binomialScalar);
+
+    NdArray<double> (*cauchyArray)(const Shape&, double, double) = &random::cauchy<double>;
+    double (*cauchyScalar)(double, double) = &random::cauchy<double>;
+    bp::def("cauchy", cauchyArray);
+    bp::def("cauchy", cauchyScalar);
+
+
+    NdArray<double> (*chiSquareArray)(const Shape&, double) = &random::chiSquare<double>;
+    double (*chiSquareScalar)(double) = &random::chiSquare<double>;
+    bp::def("chiSquare", chiSquareArray);
+    bp::def("chiSquare", chiSquareScalar);
+
+
     bp::def("choiceSingle", &RandomInterface::choiceSingle<double>);
     bp::def("choiceMultiple", &RandomInterface::choiceMultiple<double>);
-    bp::def("cauchy", &random::cauchy<double>);
-    bp::def("discrete", &random::discrete<int32>);
-    bp::def("exponential", &random::exponential<double>);
-    bp::def("extremeValue", &random::extremeValue<double>);
-    bp::def("f", &random::f<double>);
-    bp::def("gamma", &random::gamma<double>);
-    bp::def("geometric", &random::geometric<int32>);
-    bp::def("laplace", &random::laplace<double>);
-    bp::def("lognormal", &random::lognormal<double>);
-    bp::def("negativeBinomial", &random::negativeBinomial<int32>);
-    bp::def("nonCentralChiSquared", &random::nonCentralChiSquared<double>);
-    bp::def("normal", &random::normal<double>);
+
+    NdArray<int32> (*discreteArray)(const Shape&, const NdArray<double>&) = &random::discrete<int32>;
+    int32 (*discreteScalar)(const NdArray<double>&) = &random::discrete<int32>;
+    bp::def("discrete", discreteArray);
+    bp::def("discrete", discreteScalar);
+
+    NdArray<double> (*exponentialArray)(const Shape&, double) = &random::exponential<double>;
+    double (*exponentialScalar)(double) = &random::exponential<double>;
+    bp::def("exponential", exponentialArray);
+    bp::def("exponential", exponentialScalar);
+
+    NdArray<double> (*extremeValueArray)(const Shape&, double, double) = &random::extremeValue<double>;
+    double (*extremeValueScalar)(double, double) = &random::extremeValue<double>;
+    bp::def("extremeValue", extremeValueArray);
+    bp::def("extremeValue", extremeValueScalar);
+
+    NdArray<double> (*fArray)(const Shape&, double, double) = &random::f<double>;
+    double (*fScalar)(double, double) = &random::f<double>;
+    bp::def("f", fArray);
+    bp::def("f", fScalar);
+
+    NdArray<double> (*gammaArray)(const Shape&, double, double) = &random::gamma<double>;
+    double (*gammaScalar)(double, double) = &random::gamma<double>;
+    bp::def("gamma", gammaArray);
+    bp::def("gamma", gammaScalar);
+
+    NdArray<int32> (*geometricArray)(const Shape&, double) = &random::geometric<int32>;
+    int32 (*geometricScalar)(double) = &random::geometric<int32>;
+    bp::def("geometric", geometricArray);
+    bp::def("geometric", geometricScalar);
+
+    NdArray<double> (*laplaceArray)(const Shape&, double, double) = &random::laplace<double>;
+    double (*laplaceScalar)(double, double) = &random::laplace<double>;
+    bp::def("laplace", laplaceArray);
+    bp::def("laplace", laplaceScalar);
+
+    NdArray<double> (*lognormalArray)(const Shape&, double, double) = &random::lognormal<double>;
+    double (*lognormalScalar)(double, double) = &random::lognormal<double>;
+    bp::def("lognormal", lognormalArray);
+    bp::def("lognormal", lognormalScalar);
+
+    NdArray<int32> (*negativeBinomialArray)(const Shape&, int32, double) = &random::negativeBinomial<int32>;
+    int32 (*negativeBinomialScalar)(int32, double) = &random::negativeBinomial<int32>;
+    bp::def("negativeBinomial", negativeBinomialArray);
+    bp::def("negativeBinomial", negativeBinomialScalar);
+
+    NdArray<double> (*nonCentralChiSquaredArray)(const Shape&, double, double) = &random::nonCentralChiSquared<double>;
+    double (*nonCentralChiSquaredScalar)(double, double) = &random::nonCentralChiSquared<double>;
+    bp::def("nonCentralChiSquared", nonCentralChiSquaredArray);
+    bp::def("nonCentralChiSquared", nonCentralChiSquaredScalar);
+
+    NdArray<double> (*normalArray)(const Shape&, double, double) = &random::normal<double>;
+    double (*normalScalar)(double, double) = &random::normal<double>;
+    bp::def("normal", normalArray);
+    bp::def("normal", normalScalar);
+
     bp::def("permutationScaler", &RandomInterface::permutationScaler<double>);
     bp::def("permutationArray", &RandomInterface::permutationArray<double>);
-    bp::def("poisson", &random::poisson<int32>);
-    bp::def("rand", &random::rand<double>);
-    bp::def("randN", &random::randN<double>);
-    bp::def("randFloat", &random::randFloat<double>);
-    bp::def("randInt", &random::randInt<int32>);
+
+    NdArray<int32> (*poissonArray)(const Shape&, double) = &random::poisson<int32>;
+    int32 (*poissonScalar)(double) = &random::poisson<int32>;
+    bp::def("poisson", poissonArray);
+    bp::def("poisson", poissonScalar);
+
+    NdArray<double> (*randArray)(const Shape&) = &random::rand<double>;
+    double (*randScalar)() = &random::rand<double>;
+    bp::def("rand", randArray);
+    bp::def("rand", randScalar);
+
+    NdArray<double> (*randFloatArray)(const Shape&, double, double) = &random::randFloat<double>;
+    double (*randFloatScalar)(double, double) = &random::randFloat<double>;
+    bp::def("randFloat", randFloatArray);
+    bp::def("randFloat", randFloatScalar);
+
+    NdArray<int32> (*randIntArray)(const Shape&, int32, int32) = &random::randInt<int32>;
+    int32 (*randIntScalar)(int32, int32) = &random::randInt<int32>;
+    bp::def("randInt", randIntArray);
+    bp::def("randInt", randIntScalar);
+
+    NdArray<double> (*randNArray)(const Shape&) = &random::randN<double>;
+    double (*randNScalar)() = &random::randN<double>;
+    bp::def("randN", randNArray);
+    bp::def("randN", randNScalar);
+
     bp::def("seed", &random::seed);
     bp::def("shuffle", &random::shuffle<double>);
-    bp::def("studentT", &random::studentT<double>);
-    bp::def("standardNormal", &random::standardNormal<double>);
-    bp::def("triangle", &random::triangle<double>);
-    bp::def("uniform", &random::uniform<double>);
+
+    NdArray<double> (*standardNormalArray)(const Shape&) = &random::standardNormal<double>;
+    double (*standardNormalScalar)() = &random::standardNormal<double>;
+    bp::def("standardNormal", standardNormalArray);
+    bp::def("standardNormal", standardNormalScalar);
+
+    NdArray<double> (*studentTArray)(const Shape&, double) = &random::studentT<double>;
+    double (*studentTScalar)(double) = &random::studentT<double>;
+    bp::def("studentT", studentTArray);
+    bp::def("studentT", studentTScalar);
+
+    NdArray<double> (*triangleArray)(const Shape&, double, double, double) = &random::triangle<double>;
+    double (*triangleScalar)(double, double, double) = &random::triangle<double>;
+    bp::def("triangle", triangleArray);
+    bp::def("triangle", triangleScalar);
+
+    NdArray<double> (*uniformArray)(const Shape&, double, double) = &random::uniform<double>;
+    double (*uniformScalar)(double, double) = &random::uniform<double>;
+    bp::def("uniform", uniformArray);
+    bp::def("uniform", uniformScalar);
+
     bp::def("uniformOnSphere", &random::uniformOnSphere<double>);
-    bp::def("weibull", &random::weibull<double>);
+
+    NdArray<double> (*weibullArray)(const Shape&, double, double) = &random::weibull<double>;
+    double (*weibullScalar)(double, double) = &random::weibull<double>;
+    bp::def("weibull", weibullArray);
+    bp::def("weibull", weibullScalar);
 
     // Linalg.hpp
     bp::def("cholesky", &linalg::cholesky<double>);
@@ -4681,6 +4859,8 @@ BOOST_PYTHON_MODULE(NumCpp)
         .def("zRotation", &rotations::DCM::zRotation).staticmethod("zRotation");
 
     bp::def("rodriguesRotation", &RotationsInterface::rodriguesRotation<double>);
+    bp::def("wahbasProblem", &RotationsInterface::wahbasProblem<double>);
+    bp::def("wahbasProblemWeighted", &RotationsInterface::wahbasProblemWeighted<double>);
 
     // Filters.hpp
     bp::enum_<filter::Boundary>("Mode")
